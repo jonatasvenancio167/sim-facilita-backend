@@ -25,8 +25,23 @@ Route.group(() => {
     return { hello: 'world' }
   })
 
+  Route.post('/login', 'AuthController.login')
+  Route.post('/logout', 'AuthController.logout')
+  Route.post('/register', 'AuthController.register')
+
   Route.resource('/users', 'UsersController').apiOnly()
   Route.post('/users/:userId/posts', 'PostsController.store')
-  Route.post('/users/:userId/posts/:postId/commentaries', 'CommentariesController.store')
-  Route.resource('/followers', 'FollowersController').apiOnly()
+  Route.post('/posts/:postId/commentaries', 'CommentariesController.store')
+
+  Route.group(() => {
+    Route.resource('/post', 'PostsController')
+  }).middleware(['auth'])
+
+  Route.group(() => {
+    Route.get('users/:userId/followers', 'FollowersController.followers')
+    Route.get('users/:userId/following', 'FollowersController.following')
+    Route.get('users/:userId/is-following', 'FollowersController.isFollowing')
+    Route.post('users/:userId/follow', 'FollowersController.followUser')
+  }).middleware(['auth'])
+  
 }).prefix('/api')
