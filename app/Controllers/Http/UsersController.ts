@@ -18,7 +18,6 @@ export default class UsersController {
     const users = await User.query()
                             .preload('posts')
                             .preload('commentary')
-
     return {
       data: users
     }
@@ -47,11 +46,11 @@ export default class UsersController {
     const body = request.body()
     const user = await User.findOrFail(params.id)
 
-    user.name = body.name
+    user.username = body.name
     user.lastName = body.lastName
     user.birthday = body.birthday
     user.phone = body.phone
-    user.mail = body.mail
+    user.email = body.mail
     user.password = body.password
 
     await user.save()

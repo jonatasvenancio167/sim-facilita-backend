@@ -4,9 +4,9 @@ import Post from "App/Models/Post"
 import User from 'App/Models/User'
 
 export default class PostsController {
-  public async store({request, params, response}: HttpContextContract) {
+  public async store({request, auth, response}: HttpContextContract) {
     const body = request.body()
-    const userId = params.userId
+    const userId = auth.user!
 
     await User.findOrFail(userId)
 
