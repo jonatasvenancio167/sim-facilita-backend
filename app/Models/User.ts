@@ -47,4 +47,8 @@ export default class User extends BaseModel {
       User.password = await Hash.make(User.password)
     }
   }
+
+  public async verifyPassword (password: string): Promise<boolean> {
+    return await Hash.verify(this.password, password)
+  }
 }
