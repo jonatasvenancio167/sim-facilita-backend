@@ -14,12 +14,13 @@ export default class UsersController {
     }
   }
 
-  public async index() {
-    const users = await User.query()
-                            .preload('posts')
-                            .preload('commentary')
+  public async index({ auth }) {
+    const user = auth.user!
+    // const users = await User.query()
+    //                         .preload('posts')
+    //                         .preload('commentary')
     return {
-      data: users
+      data: user
     }
   }
 
