@@ -13,6 +13,9 @@ export default class Commentary extends BaseModel {
   @column()
   public username: String
 
+  @column()
+  public date: String
+
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
 

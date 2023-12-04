@@ -10,6 +10,7 @@ export default class extends BaseSchema {
       table.string('text_commentary')
       table.integer('user_id').unsigned().references('users.id')
       table.integer('post_id').unsigned().references('posts.id')
+      table.string('date')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

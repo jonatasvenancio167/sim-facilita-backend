@@ -10,13 +10,16 @@ export default class Post extends BaseModel {
   public id: number
 
   @column()
-  public textPost: String
+  public text: String
 
   @column()
-  public username: String
+  public author: String
 
   @column()
   public userId: number
+
+  @column()
+  public date: String
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
