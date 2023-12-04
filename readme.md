@@ -1,4 +1,4 @@
-# Nome do Projeto
+# Sim Facilita Back-end
 
 Um projeto back que tem o intuito de o usuário criar login, criar novos posts, realizar comentários em posts e fazer novos seguidores
 
